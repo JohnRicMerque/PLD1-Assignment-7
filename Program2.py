@@ -27,14 +27,22 @@ def validatePass(password):
 
 # Asks user input, validates and declares validation
 def askPassValidate():
-    userPassword = input("Enter Password: ")
-    letterG, capG, numG, specialG = validatePass(userPassword)
-    # conditions 
-    if letterG > 15 and capG > 0 and numG > 0 and specialG > 0:
-        print("Password is Valid.")
-    else:
-        print("Password is Invalid. Please Try again.")
-        askPassValidate()
-
+    while True:
+        userPassword = input("Enter Password: ")
+        letterG, capG, numG, specialG = validatePass(userPassword)
+        # conditions 
+        if letterG > 15 and capG > 0 and numG > 0 and specialG > 0:
+            print("Password is Valid.")
+            break
+        if letterG <= 15:
+            print("Invalid. Please include greater than 15 letters")
+        if capG == 0:
+            print("Invalid. Please include at least one capital letter")
+        if numG == 0:
+            print("Invalid. Please include at least one number")
+        if specialG == 0:
+            print("Invalid. Please include at least one special character")
+        continue
+    
 # declaring the function
 askPassValidate()
