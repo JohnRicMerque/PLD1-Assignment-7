@@ -8,37 +8,33 @@
 
 import string
 
+# looping characters and incrementing variables
 def validatePass(password):
+    length = False
+    capLettersNum = 0
+    numbersNum = 0
+    specialChar = 0
     for char in password:
         if len(password) > 15:
-            global length
             length = True
-        if char.isupper():
-            global capLettersNum 
+        if char.isupper(): 
             capLettersNum += 1
-        if char.isnumeric():
-            global numbersNum 
+        if char.isnumeric(): 
             numbersNum += 1
-        if char in set(string.punctuation):
-            global specialChar 
+        if char in set(string.punctuation): 
             specialChar += 1
-       
-def askPass():
+    return length, capLettersNum, numbersNum, specialChar
+
+# Asks user input, validates and declares validation
+def askPassValidate():
     userPassword = input("Enter Password: ")
-    validatePass(userPassword)
-    global length
-    global capLettersNum
-    global numbersNum
-    global specialChar 
-    if length == True and capLettersNum > 0 and numbersNum > 0 and specialChar > 0:
+    lengthG, capG, numG, specialG = validatePass(userPassword)
+    # conditions 
+    if lengthG == True and capG > 0 and numG > 0 and specialG > 0:
         print("Password is Valid.")
     else:
         print("Password is Invalid. Please Try again.")
-        askPass()
+        askPassValidate()
 
-length = False
-capLettersNum = 0
-numbersNum = 0
-specialChar = 0
-
-askPass()
+# declaring the function
+askPassValidate()
