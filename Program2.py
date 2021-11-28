@@ -8,28 +8,36 @@
 
 import string
 
-# user input
-userPassword = input("Enter Password: ")
+def validatePass(password):
+    for char in password:
+        if len(password) > 15:
+            global length
+            length = True
+        if char.isupper():
+            global capLettersNum 
+            capLettersNum += 1
+        if char.isnumeric():
+            global numbersNum 
+            numbersNum += 1
+        if char in set(string.punctuation):
+            global specialChar 
+            specialChar += 1
+       
+def askPass():
+    userPassword = input("Enter Password: ")
+    validatePass(userPassword)
+    global length
+    global capLettersNum
+    global numbersNum
+    global specialChar 
+    if length == True and capLettersNum > 0 and numbersNum > 0 and specialChar > 0:
+        print("Password is Valid.")
+    else:
+        print("Password is Invalid")
 
-# initial declaration of variables
 length = False
 capLettersNum = 0
 numbersNum = 0
 specialChar = 0
 
-# validation 
-for char in userPassword:
-        if len(userPassword) > 15:
-            length = True
-        if char.isupper():
-            capLettersNum += 1
-        if char.isnumeric():
-            numbersNum += 1
-        if char in set(string.punctuation):
-            specialChar += 1
-
-if length == True and capLettersNum > 0 and numbersNum > 0 and specialChar > 0:
-    print("Password is Valid.")
-else: 
-    print("Password is Invalid.")
-    
+askPass()
