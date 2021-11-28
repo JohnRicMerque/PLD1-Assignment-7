@@ -41,6 +41,8 @@ sentence = input("Enter a sentence: ")
 sentence = sentence.strip()
 sentence = re.sub('  +', ' ', sentence)
 
+print("----------------------------------")
+
 # getting the number of words
 wordsNum = getWordsNum(" ", sentence)
 print(f"Number of words: {wordsNum}")
