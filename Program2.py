@@ -33,7 +33,8 @@ def askPass():
     if length == True and capLettersNum > 0 and numbersNum > 0 and specialChar > 0:
         print("Password is Valid.")
     else:
-        print("Password is Invalid")
+        print("Password is Invalid. Please Try again.")
+        askPass()
 
 length = False
 capLettersNum = 0
